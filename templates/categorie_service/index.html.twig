@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CategorieService index{% endblock %}
+
+{% block body %}
+    <h1>CategorieService index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Description</th>
+                <th>Contenue</th>
+                <th>Photo1024x768</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie_service in categorie_services %}
+            <tr>
+                <td>{{ categorie_service.id }}</td>
+                <td>{{ categorie_service.designation }}</td>
+                <td>{{ categorie_service.description }}</td>
+                <td>{{ categorie_service.contenue }}</td>
+                <td>{{ categorie_service.photo1024x768 }}</td>
+                <td>
+                    <a href="{{ path('app_categorie_service_show', {'id': categorie_service.id}) }}">show</a>
+                    <a href="{{ path('app_categorie_service_edit', {'id': categorie_service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_categorie_service_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magazine{% endblock %}
+
+{% block body %}
+    <h1>Magazine</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ magazine.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ magazine.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ magazine.description }}</td>
+            </tr>
+            <tr>
+                <th>Contenue</th>
+                <td>{{ magazine.contenue }}</td>
+            </tr>
+            <tr>
+                <th>Photo1024x768</th>
+                <td>{{ magazine.photo1024x768 }}</td>
+            </tr>
+            <tr>
+                <th>Photo800x600Un</th>
+                <td>{{ magazine.photo800x600Un }}</td>
+            </tr>
+            <tr>
+                <th>Photo800x600Deux</th>
+                <td>{{ magazine.photo800x600Deux }}</td>
+            </tr>
+            <tr>
+                <th>Photo800x600Trois</th>
+                <td>{{ magazine.photo800x600Trois }}</td>
+            </tr>
+            <tr>
+                <th>IsRecent</th>
+                <td>{{ magazine.isRecent ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>IsPrincipal</th>
+                <td>{{ magazine.isPrincipal ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_magazine_index') }}">back to list</a>
+
+    <a href="{{ path('app_magazine_edit', {'id': magazine.id}) }}">edit</a>
+
+    {{ include('magazine/_delete_form.html.twig') }}
+{% endblock %}

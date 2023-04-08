@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magazine index{% endblock %}
+
+{% block body %}
+    <h1>Magazine index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Contenue</th>
+                <th>Photo1024x768</th>
+                <th>Photo800x600Un</th>
+                <th>Photo800x600Deux</th>
+                <th>Photo800x600Trois</th>
+                <th>IsRecent</th>
+                <th>IsPrincipal</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for magazine in magazines %}
+            <tr>
+                <td>{{ magazine.id }}</td>
+                <td>{{ magazine.titre }}</td>
+                <td>{{ magazine.description }}</td>
+                <td>{{ magazine.contenue }}</td>
+                <td>{{ magazine.photo1024x768 }}</td>
+                <td>{{ magazine.photo800x600Un }}</td>
+                <td>{{ magazine.photo800x600Deux }}</td>
+                <td>{{ magazine.photo800x600Trois }}</td>
+                <td>{{ magazine.isRecent ? 'Yes' : 'No' }}</td>
+                <td>{{ magazine.isPrincipal ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_magazine_show', {'id': magazine.id}) }}">show</a>
+                    <a href="{{ path('app_magazine_edit', {'id': magazine.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_magazine_new') }}">Create new</a>
+{% endblock %}
