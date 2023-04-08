@@ -50,6 +50,9 @@ class Magazine
     #[ORM\OneToMany(mappedBy: 'magazine', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $datePublication = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -206,6 +209,18 @@ class Magazine
                 $commentaire->setMagazine(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDatePublication(): ?\DateTimeInterface
+    {
+        return $this->datePublication;
+    }
+
+    public function setDatePublication(\DateTimeInterface $datePublication): self
+    {
+        $this->datePublication = $datePublication;
 
         return $this;
     }

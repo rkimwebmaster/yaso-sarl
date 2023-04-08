@@ -1,51 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Magazine index{% endblock %}
+{% block title %}Tous les magazines YASO
+{% endblock %}
+{% block titrePage %}
+	{{ block('title') }}
+{% endblock %}
 
 {% block body %}
-    <h1>Magazine index</h1>
+	{% for magazine in magazines %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Contenue</th>
-                <th>Photo1024x768</th>
-                <th>Photo800x600Un</th>
-                <th>Photo800x600Deux</th>
-                <th>Photo800x600Trois</th>
-                <th>IsRecent</th>
-                <th>IsPrincipal</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for magazine in magazines %}
-            <tr>
-                <td>{{ magazine.id }}</td>
-                <td>{{ magazine.titre }}</td>
-                <td>{{ magazine.description }}</td>
-                <td>{{ magazine.contenue }}</td>
-                <td>{{ magazine.photo1024x768 }}</td>
-                <td>{{ magazine.photo800x600Un }}</td>
-                <td>{{ magazine.photo800x600Deux }}</td>
-                <td>{{ magazine.photo800x600Trois }}</td>
-                <td>{{ magazine.isRecent ? 'Yes' : 'No' }}</td>
-                <td>{{ magazine.isPrincipal ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_magazine_show', {'id': magazine.id}) }}">show</a>
-                    <a href="{{ path('app_magazine_edit', {'id': magazine.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<article class="entry">
 
-    <a href="{{ path('app_magazine_new') }}">Create new</a>
+			<div class="entry-img">
+				<img src="{{asset('assets/img/blog/blog-1.jpg')}}" alt="{{ magazine.titre }}" class="img-fluid">
+			</div>
+
+			<h2 class="entry-title">
+				<a href="{{url('app_magazine_show', {id:magazine.id})}}">
+					{{ magazine.titre }}
+				</a>
+			</h2>
+
+			<div class="entry-meta">
+				<ul>
+					<li class="d-flex align-items-center">
+						<i class="bi bi-person"></i>
+						<a href="blog-single.html">John Doe</a>
+					</li>
+					<li class="d-flex align-items-center">
+						<i class="bi bi-clock"></i>
+						<a href="blog-single.html">
+							<time datetime="2020-01-01">Jan 1, 2020</time>
+						</a>
+					</li>
+					<li class="d-flex align-items-center">
+						<i class="bi bi-chat-dots"></i>
+						<a href="blog-single.html">12 Comments</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="entry-content">
+				<p>
+					{{ magazine.description }}
+				</p>
+				<div class="read-more">
+					<a href="{{url('app_magazine_show', {id: magazine.id})}}">En savoir plus
+					</a>
+				</div>
+			</div>
+
+		</article>
+		<!-- End blog entry -->
+
+	{% endfor %}
 {% endblock %}
