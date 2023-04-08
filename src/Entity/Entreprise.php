@@ -71,23 +71,6 @@ class Entreprise
     #[ORM\Column(length: 255)]
     private ?string $pays = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $newsbg389x454 = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $menuBanner295x320Premier = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $menuBanner295x320Deuxieme = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $menuBanner295x320Troisieme = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $mainBanner1903x650Un = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $mainBanner1903x650Deux = null;
 
     public function getId(): ?int
     {
@@ -310,76 +293,5 @@ class Entreprise
         return $this;
     }
 
-    public function getNewsbg389x454(): ?string
-    {
-        return $this->newsbg389x454;
-    }
-
-    public function setNewsbg389x454(?string $newsbg389x454): self
-    {
-        $this->newsbg389x454 = $newsbg389x454;
-
-        return $this;
-    }
-
-    public function getMenuBanner295x320Premier(): ?string
-    {
-        return $this->menuBanner295x320Premier;
-    }
-
-    public function setMenuBanner295x320Premier(?string $menuBanner295x320Premier): self
-    {
-        $this->menuBanner295x320Premier = $menuBanner295x320Premier;
-
-        return $this;
-    }
-
-    public function getMenuBanner295x320Deuxieme(): ?string
-    {
-        return $this->menuBanner295x320Deuxieme;
-    }
-
-    public function setMenuBanner295x320Deuxieme(?string $menuBanner295x320Deuxieme): self
-    {
-        $this->menuBanner295x320Deuxieme = $menuBanner295x320Deuxieme;
-
-        return $this;
-    }
-
-    public function getMenuBanner295x320Troisieme(): ?string
-    {
-        return $this->menuBanner295x320Troisieme;
-    }
-
-    public function setMenuBanner295x320Troisieme(?string $menuBanner295x320Troisieme): self
-    {
-        $this->menuBanner295x320Troisieme = $menuBanner295x320Troisieme;
-
-        return $this;
-    }
-
-    public function getMainBanner1903x650Un(): ?string
-    {
-        return $this->mainBanner1903x650Un;
-    }
-
-    public function setMainBanner1903x650Un(?string $mainBanner1903x650Un): self
-    {
-        $this->mainBanner1903x650Un = $mainBanner1903x650Un;
-
-        return $this;
-    }
-
-    public function getMainBanner1903x650Deux(): ?string
-    {
-        return $this->mainBanner1903x650Deux;
-    }
-
-    public function setMainBanner1903x650Deux(?string $mainBanner1903x650Deux): self
-    {
-        $this->mainBanner1903x650Deux = $mainBanner1903x650Deux;
-
-        return $this;
-    }
 
 }
