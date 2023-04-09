@@ -2,6 +2,7 @@
 
 namespace App\EventSubscriber;
 
+use App\Repository\CategorieMagazineRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FAQRepository;
@@ -25,6 +26,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
         private ServiceRepository $serviceRepository, 
         private FAQRepository $faqRepository, 
         private TemoignageRepository $temoignageRepository, 
+        private CategorieMagazineRepository $categorieMagazineRepository, 
         private MagazineRepository $magazineRepository, )
     {
         
@@ -33,6 +35,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     {
         $this->twig->addGlobal('entreprise', $this->entrepriseRepository->findOneBy([]));
         $this->twig->addGlobal('services', $this->serviceRepository->findAll([]));
+        $this->twig->addGlobal('categorieMagazines', $this->categorieMagazineRepository->findAll([]));
         $this->twig->addGlobal('magazines', $this->magazineRepository->findAll([]));
         $this->twig->addGlobal('partenaires', $this->partenaireRepository->findAll([]));
         $this->twig->addGlobal('temoignages', $this->temoignageRepository->findAll([]));

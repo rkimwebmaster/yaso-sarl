@@ -53,5 +53,15 @@
 		</article>
 		<!-- End blog entry -->
 
-	{% endfor %}
-{% endblock %}
+{% else %}
+            <div class="alert alert-info">
+                Aucune information dans le syètème 
+            </div>
+        {% endfor %}
+        <div class="blog-pagination">
+              <ul class="justify-content-center">
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+              </ul>
+            </div>{% endblock %}

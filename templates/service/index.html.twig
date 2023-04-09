@@ -1,47 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Service index{% endblock %}
+{% block title %}Tous les services YASO {% endblock %}
 
 {% block body %}
-    <h1>Service index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-                <th>Contenue</th>
-                <th>Photo1024x768</th>
-                <th>Photo800x600Un</th>
-                <th>Photo800x600Deux</th>
-                <th>Photo800x600Trois</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for service in services %}
-            <tr>
-                <td>{{ service.id }}</td>
-                <td>{{ service.titre }}</td>
-                <td>{{ service.description }}</td>
-                <td>{{ service.contenue }}</td>
-                <td>{{ service.photo1024x768 }}</td>
-                <td>{{ service.photo800x600Un }}</td>
-                <td>{{ service.photo800x600Deux }}</td>
-                <td>{{ service.photo800x600Trois }}</td>
-                <td>
-                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
-                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            
+            <article class="entry">
 
-    <a href="{{ path('app_service_new') }}">Create new</a>
+              <div class="entry-img">
+                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+              </div>
+
+              <h2 class="entry-title">
+                <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+                <p>
+                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                  Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                </p>
+                <div class="read-more">
+                  <a href="blog-single.html">Read More</a>
+                </div>
+              </div>
+
+            </article><!-- End blog entry -->
+        {% else %}
+            <div class="alert alert-info">
+                Aucune information dans le syètème 
+            </div>
+        {% endfor %}
+        <div class="blog-pagination">
+              <ul class="justify-content-center">
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+              </ul>
+            </div>
 {% endblock %}
