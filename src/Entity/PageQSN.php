@@ -21,7 +21,7 @@ class PageQSN
     private ?string $description = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $contenue = null;
+    private ?string $contenu = null;
 
     #[ORM\Column(length: 255)]
     private ?string $photo1024x768 = null;
@@ -64,17 +64,6 @@ class PageQSN
         return $this;
     }
 
-    public function getContenue(): ?string
-    {
-        return $this->contenue;
-    }
-
-    public function setContenue(string $contenue): self
-    {
-        $this->contenue = $contenue;
-
-        return $this;
-    }
 
     public function getPhoto1024x768(): ?string
     {
@@ -120,6 +109,18 @@ class PageQSN
     public function setPhoto800x600Trois(string $photo800x600Trois): self
     {
         $this->photo800x600Trois = $photo800x600Trois;
+
+        return $this;
+    }
+
+    public function getContenu(): ?string
+    {
+        return $this->contenu;
+    }
+
+    public function setContenu(string $contenu): self
+    {
+        $this->contenu = $contenu;
 
         return $this;
     }

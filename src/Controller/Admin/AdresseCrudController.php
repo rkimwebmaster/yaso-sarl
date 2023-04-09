@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Adresse;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class AdresseCrudController extends AbstractCrudController
 {
@@ -12,14 +14,18 @@ class AdresseCrudController extends AbstractCrudController
         return Adresse::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            IdField::new('id')->hideOnForm(),
+            TextField::new('adresse'),
+            TextField::new('ville'),
+            TextField::new('pays'),
+            TextField::new('telephone'),
+            // TextField::new('email'),
+            // TextEditorField::new('description'),
         ];
     }
-    */
+    
 }
