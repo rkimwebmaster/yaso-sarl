@@ -6,6 +6,7 @@ use App\Entity\NewsLetter;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class NewsLetterCrudController extends AbstractCrudController
@@ -25,6 +26,14 @@ class NewsLetterCrudController extends AbstractCrudController
         ];
     }
     */
+
+    
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+        ->add('email')
+        ;
+    }
 
     public function configureActions(Actions $actions): Actions
     {

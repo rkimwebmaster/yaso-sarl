@@ -52,7 +52,8 @@
 		<header id="header" class="fixed-top d-flex align-items-center">
 			<div class="container d-flex align-items-center">
 				{# <h1 class="logo me-auto"><a href="{{url('app_accueil')}}">YASO RDC<span>.</span></a></h1> #}
-				<!-- Uncomment below if you prefer to use an image logo --><a href="{{url('app_accueil')}}" class="logo me-auto"> <img src="{{asset('images/logoyaso.jpg')}}" alt=""></a>
+				<!-- Uncomment below if you prefer to use an image logo -->
+					<a href="{{url('app_accueil')}}" class="logo me-auto"> <img src="{{asset('images/logoyaso.jpg')}}" alt=""></a>
 
 				<nav id="navbar" class="navbar order-last order-lg-0">
 					<ul>
@@ -63,7 +64,7 @@
 							<a href="{{url('app_service_index')}}">
 								<span>Services
 								</span>
-                {% if services is defined and services| length > 0 %}
+								{% if services is defined and services| length > 0 %}
 									<i class="bi bi-chevron-down"></i>
 								{% endif %}
 							</a>
@@ -98,15 +99,46 @@
 								</ul>
 							{% endif %}
 						</li>
-						<li>
-							<a class="nav-link scrollto" href="#contact">Contact</a>
+						<li class="dropdown">
+							<a href="{{url('app_contact_index')}}">
+								<span>Contact
+								</span>
+								<i class="bi bi-chevron-down"></i>
+							</a>
+							<ul>
+								<li><ahref="{{url('app_contact_index')}}">Nous contactez</a></li>
+								<li><a href="#">Ecrire sur whataspp</a></li>
+							</ul>
 						</li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
 				<!-- .navbar -->
+				{% if not app.user %}
+					<a href="{{url('app_login')}}" class="get-started-btn scrollto">Connexion</a>
 
-				<a href="{{url('app_login')}}" class="get-started-btn scrollto">Connexion</a>
+				{% else %}
+					<div class="dropdown">
+						<button class="get-started-btn btn-danger scrollto dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							Salut {{app.user.username}}
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li>
+								<a class="dropdown-item" href="{{url('app_user_show', {id:app.user.id })}}">Profile
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{url('app_admin')}}">Dashboard admin</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="{{url('app_logout')}}">Déconnexion</a>
+							</li>
+						</ul>
+					</div>
+				{% endif %}
+
+
 			</div>
 		</header>
 

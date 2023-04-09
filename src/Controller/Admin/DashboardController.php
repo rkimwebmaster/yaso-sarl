@@ -11,6 +11,7 @@ use App\Entity\Entreprise;
 use App\Entity\FAQ;
 use App\Entity\ImageGallerie;
 use App\Entity\Magazine;
+use App\Entity\MessageBroadcast;
 use App\Entity\NewsLetter;
 use App\Entity\PageQSN;
 use App\Entity\Partenaire;
@@ -127,6 +128,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Services')->setSubItems([
             MenuItem::linkToCrud('Liste ', 'fa fa-list-ul', Service::class)->setAction(Crud::PAGE_INDEX),
             MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Service::class)->setAction(Crud::PAGE_NEW),
+
+        ]);
+        yield MenuItem::subMenu('Messages Broadcasts ')->setSubItems([
+            MenuItem::linkToCrud('Liste ', 'fa fa-list-ul', MessageBroadcast::class)->setAction(Crud::PAGE_INDEX),
+            MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', MessageBroadcast::class)->setAction(Crud::PAGE_NEW),
 
         ]);
     }

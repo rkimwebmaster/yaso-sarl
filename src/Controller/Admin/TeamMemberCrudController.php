@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\TeamMember;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -31,6 +32,16 @@ class TeamMemberCrudController extends AbstractCrudController
             TextField::new('pinterest')->setColumns(3),
             // TextField::new('behance'),
         ];
+    }
+
+    
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+        ->add('noms')
+        ->add('fonction')
+        ->add('description')
+        ;
     }
     
 }

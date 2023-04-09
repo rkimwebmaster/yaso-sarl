@@ -25,6 +25,9 @@ class NewsLetter
     #[ORM\Column(length: 255, nullable:true)]
     private ?string $ipAdress = null;
 
+    #[ORM\ManyToOne(inversedBy: 'destinataires')]
+    private ?MessageBroadcast $messageBroadcast = null;
+
     public function __construct()
     {
         $this->createdAt=new \DateTimeImmutable();
@@ -80,6 +83,18 @@ class NewsLetter
     public function setIpAdress(string $ipAdress): self
     {
         $this->ipAdress = $ipAdress;
+
+        return $this;
+    }
+
+    public function getMessageBroadcast(): ?MessageBroadcast
+    {
+        return $this->messageBroadcast;
+    }
+
+    public function setMessageBroadcast(?MessageBroadcast $messageBroadcast): self
+    {
+        $this->messageBroadcast = $messageBroadcast;
 
         return $this;
     }

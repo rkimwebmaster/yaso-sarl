@@ -29,9 +29,12 @@ class EntrepriseCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('nomEntreprise')->hideOnIndex()->setColumns(3),
-            TextField::new('sigle')->setColumns(2),
-            ImageField::new('logo')->setBasePath('uploads/images/')->setUploadDir('public/uploads/images/')->setColumns(1),
+            TextField::new('nomEntreprise')->hideOnIndex()->setColumns(4),
+            TextField::new('sigle')->setColumns(4),
+            ImageField::new('logo')->setBasePath('uploads/images/')->setUploadDir('public/uploads/images/')->setColumns(4),
+            AssociationField::new('carouselUn')->renderAsEmbeddedForm(CarouselCrudController::class)->setColumns(12)->setLabel("Premier carousel"),
+            AssociationField::new('carouselDeux')->renderAsEmbeddedForm(CarouselCrudController::class)->setColumns(12)->setLabel("Deuxieme carousel"),
+            AssociationField::new('carouselTrois')->renderAsEmbeddedForm(CarouselCrudController::class)->setColumns(12)->setLabel("Troiisième carousel"),
             TextField::new('responsable')->hideOnIndex()->setColumns(3),
             TextField::new('slogan')->hideOnIndex()->setColumns(3),
             TelephoneField::new('phoneNumber')->setColumns(3)->setLabel("Numéro téléphone"),

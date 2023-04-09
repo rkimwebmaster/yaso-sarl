@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Service;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -29,6 +30,15 @@ class ServiceCrudController extends AbstractCrudController
             ImageField::new('photo800x600Deux')->setBasePath('uploads/images/')->setUploadDir('public/uploads/images/')->setColumns(6)->setLabel("Image de la page du service ")->setHelp("Avec une taille photo800x600Un et le plus léger possible"),
             ImageField::new('photo800x600Trois')->setBasePath('uploads/images/')->setUploadDir('public/uploads/images/')->setColumns(6)->setLabel("Image de la page du service ")->setHelp("Avec une taille photo800x600Un et le plus léger possible"),
         ];
+    }
+
+    
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+        ->add('titre')
+        ->add('description')
+        ;
     }
     
 }

@@ -2,35 +2,39 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\CategorieImageGallerie;
+use App\Entity\MessageBroadcast;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class CategorieImageGallerieCrudController extends AbstractCrudController
+class MessageBroadcastCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return CategorieImageGallerie::class;
+        return MessageBroadcast::class;
     }
 
-
+    
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('designation')->setColumns(6),
-            TextEditorField::new('description')->setColumns(12),
+            AssociationField::new('destinataires')->setColumns(12)->setLabel("Les detinataires "),
+            TextField::new('objet')->setColumns(12)->setLabel("Sujet du message "),
+            TextEditorField::new('contenu')->setColumns(12)->setLabel("Message à envoyer "),
         ];
     }
 
+    
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('designation')
+        ->add('destinataires')
+        ->add('objet')
         ;
     }
-
+    
 }

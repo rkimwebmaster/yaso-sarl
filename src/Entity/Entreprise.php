@@ -71,6 +71,18 @@ class Entreprise
     #[ORM\Column(length: 255)]
     private ?string $pays = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Carousel $carouselUn = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Carousel $carouselDeux = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Carousel $carouselTrois = null;
+
 
     public function getId(): ?int
     {
@@ -289,6 +301,42 @@ class Entreprise
     public function setPays(string $pays): self
     {
         $this->pays = $pays;
+
+        return $this;
+    }
+
+    public function getCarouselUn(): ?Carousel
+    {
+        return $this->carouselUn;
+    }
+
+    public function setCarouselUn(Carousel $carouselUn): self
+    {
+        $this->carouselUn = $carouselUn;
+
+        return $this;
+    }
+
+    public function getCarouselDeux(): ?Carousel
+    {
+        return $this->carouselDeux;
+    }
+
+    public function setCarouselDeux(Carousel $carouselDeux): self
+    {
+        $this->carouselDeux = $carouselDeux;
+
+        return $this;
+    }
+
+    public function getCarouselTrois(): ?Carousel
+    {
+        return $this->carouselTrois;
+    }
+
+    public function setCarouselTrois(Carousel $carouselTrois): self
+    {
+        $this->carouselTrois = $carouselTrois;
 
         return $this;
     }

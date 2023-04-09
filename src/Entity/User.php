@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -28,6 +30,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: MessageBroadcast::class)]
+    private Collection $messageBroadcasts;
+
+    #[ORM\Column(length: 10)]
+    private ?string $username = null;
+
+    public function __construct()
+    {
+        $this->messageBroadcasts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,5 +110,47 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, MessageBroadcast>
+     */
+    public function getMessageBroadcasts(): Collection
+    {
+        return $this->messageBroadcasts;
+    }
+
+    public function addMessageBroadcast(MessageBroadcast $messageBroadcast): self
+    {
+        if (!$this->messageBroadcasts->contains($messageBroadcast)) {
+            $this->messageBroadcasts->add($messageBroadcast);
+            $messageBroadcast->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessageBroadcast(MessageBroadcast $messageBroadcast): self
+    {
+        if ($this->messageBroadcasts->removeElement($messageBroadcast)) {
+            // set the owning side to null (unless already changed)
+            if ($messageBroadcast->getUser() === $this) {
+                $messageBroadcast->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
     }
 }
